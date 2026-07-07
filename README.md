@@ -50,7 +50,7 @@ ya están ocupadas antes/durante un show.
   punto del span visible, y recorte del margen exterior de cada borde del
   span donde el filtro de decimación del DDC no garantiza una banda de paso
   plana (ver [RELEASE_NOTES.md](RELEASE_NOTES.md) para el detalle técnico).
-- Reintonización estable al escribir a mano en el campo de frecuencia: solo
+- Resintonización estable al escribir a mano en el campo de frecuencia: solo
   se manda un comando de sintonía al terminar de editar (no uno por cada
   pulsación mientras se escribe), evitando dejar el LO del tuner a medio
   asentar y el espectro etiquetado con la frecuencia equivocada.
@@ -140,8 +140,7 @@ cmake/         Scripts de FetchContent/ExternalProject para dependencias
 
 ## Licencia
 
-RfPulse se distribuye bajo la **GNU General Public License v3.0** (ver
-[LICENSE](LICENSE)), como consecuencia de enlazar estáticamente FFTW (GPL).
+RfPulse se distribuye bajo la **GNU General Public License v3.0** , como consecuencia de enlazar estáticamente FFTW (GPL).
 Ver [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md) para el detalle de
 todas las licencias de terceros (FFTW, Dear ImGui, ImPlot, SDDC Core).
 
