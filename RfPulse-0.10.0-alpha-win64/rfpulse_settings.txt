@@ -1,0 +1,23 @@
+# RfPulse settings -- generado automaticamente, editable a mano.
+center_frequency_hz = 560000000.000000
+span_hz = 8000000.000000
+fft_size = 16384
+rf_attenuation_index = 0
+if_gain_index = 0
+averaging_enabled = true
+averaging_alpha = 0.200000
+max_hold_enabled = false
+min_hold_enabled = false
+smoothing_width_bins = 3
+palette_index = 4
+waterfall_min_db = -100.000000
+waterfall_max_db = 0.000000
+waterfall_height_ratio = 0.350000
+squelch_threshold_db = -50.000000
+volume = 0.500000
+muted = false
+fm_mode_index = 0
+deemphasis_index = 1
+channel_bandwidth_khz = 12.500000
+peak_threshold_db = -60.000000
+frequency_presets =
