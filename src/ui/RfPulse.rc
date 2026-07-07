@@ -1,0 +1,8 @@
+// Recursos de Windows del ejecutable. El PRIMER recurso ICON de un .exe es
+// el que Windows Explorer/la barra de tareas muestran para el propio
+// archivo .exe automaticamente (sin codigo adicional); MainWindow tambien
+// lo carga explicitamente (LoadIconW, ver AppIcon.h) para fijarlo como
+// icono de la ventana en tiempo de ejecucion.
+#include "AppIcon.h"
+
+IDI_APP_ICON ICON "../../assets/icono.ico"
