@@ -26,7 +26,7 @@ ya están ocupadas antes/durante un show.
 - Motor FFT en punto flotante simple (FFTW, AVX2) con tamaños seleccionables
   de 1024 a 32768 bins.
 - Span de captura ajustable entre las tasas realmente alcanzables por el
-  RX888 MK2 (2/4/8/16/32 MHz, según el reloj de su ADC — ver
+  RX888 MK2 (2/4/8 MHz, según el reloj de su ADC — ver
   `ISdrDevice::availableSampleRates`), con el eje de frecuencias del
   espectro siempre calibrado exactamente a la tasa real capturada. Limitado
   además a lo probado fiable con hardware real por camino de entrada: hasta
