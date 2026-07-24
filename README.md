@@ -18,7 +18,7 @@ vistazo, en un span de hasta 8 MHz, qué frecuencias están limpias y cuáles
 ya están ocupadas antes/durante un show.
 
 <p align="center">
-  <img src="https://joplarosoundtech.com/wp-content/uploads/2026/07/Captura-de-pantalla-2026-07-24-132350.webp" alt="RFPulse screenshot" width="400"/>
+  <img src="https://joplarosoundtech.com/wp-content/uploads/2026/07/Captura-de-pantalla-2026-07-24-132350.webp" alt="RFPulse screenshot" width="1000"/>
 </p>
 
 
