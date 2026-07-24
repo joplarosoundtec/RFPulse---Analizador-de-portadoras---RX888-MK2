@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.24)
-project(RfPulse VERSION 0.11.0 LANGUAGES CXX)
+project(RfPulse VERSION 0.12.0 LANGUAGES CXX)
 
 if (NOT WIN32)
     message(FATAL_ERROR "RfPulse solo soporta Windows 10/11 (WASAPI, DirectX11, driver CyAPI del FX3).")

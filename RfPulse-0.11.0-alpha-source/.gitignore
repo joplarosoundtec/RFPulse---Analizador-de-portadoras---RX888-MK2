@@ -1,9 +1,0 @@
-build/
-build_verify/
-out/
-.vs/
-CMakeFiles/
-CMakeCache.txt
-*.vcxproj*
-*.sln
-*.slnx

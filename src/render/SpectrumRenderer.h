@@ -72,6 +72,16 @@ private:
     std::vector<double> scratchY_;
     std::vector<double> secondaryPeakX_;
     std::vector<double> secondaryPeakY_;
+
+    // Posicion/valor MOSTRADOS en el cartel del pico principal (la
+    // fundamental), suavizados por separado del marcador real -- ver el
+    // comentario junto a su uso en el .cpp para el porque (el usuario
+    // reporto que el cartel "daba botes" seguiendo al pico de trama en
+    // trama). El marcador (PlotScatter) y el "iman" de clic siguen usando
+    // el pico real sin suavizar; solo la caja de texto usa estos valores.
+    bool hasDisplayedPeak_ = false;
+    double displayedPeakFreqMHz_ = 0.0;
+    double displayedPeakDb_ = 0.0;
 };
 
 } // namespace rfpulse::render

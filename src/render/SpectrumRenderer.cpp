@@ -39,6 +39,18 @@ constexpr double kPeakSnapToleranceCol = 10.0;
 // manual posterior del usuario sobre ese mismo eje.
 constexpr double kDefaultYAxisMinDb = -110.0;
 constexpr double kDefaultYAxisMaxDb = -40.0;
+
+// Suavizado del CARTEL del pico principal (no del marcador ni de la traza,
+// ver el comentario junto a su uso mas abajo). kLabelSmoothingAlpha=0.08 a
+// ~60 fps (la app va vsincronizada, ver GraphicsDevice::present) da una
+// constante de tiempo de ~0.2s -- nota pero no lenta. Por debajo de los
+// umbrales de "salto grande" se desliza hacia el valor real en vez de
+// saltar de golpe; por encima (un retonizado real, o una señal
+// completamente distinta pasa a ser la mas fuerte) se salta directo, para
+// no perseguir el valor nuevo a camara lenta durante casi un segundo.
+constexpr double kLabelSmoothingAlpha = 0.08;
+constexpr double kLabelSnapFractionOfSpan = 0.03;
+constexpr double kLabelSnapDeltaDb = 10.0;
 } // namespace
 
 void SpectrumRenderer::decimateMinMax(const float* src, std::size_t srcCount, int pixelColumns,
@@ -231,9 +243,36 @@ SpectrumInteraction SpectrumRenderer::draw(const rfpulse::spectrum::SpectrumFram
         ImPlot::SetNextMarkerStyle(
             ImPlotMarker_Down, 7.0f, ImVec4(1.0f, 1.0f, 1.0f, 1.0f), 1.5f, rfpulse::ui::TraceColors::kCurrent);
         ImPlot::PlotScatter("##peak", &peakX, &peakY, 1);
+
+        // El cartel (caja de texto) del pico principal usa una posicion/
+        // valor suavizados aparte del marcador de arriba: aunque el pico ya
+        // se busca sobre averageDb (ver el comentario de peakBin), puede
+        // seguir oscilando entre dos bins de potencia casi identica de una
+        // trama a otra, y esa oscilacion -- por pequeña que sea en MHz/dB --
+        // hacia que la caja "diera botes" en pantalla, dificil de leer
+        // (reportado por el usuario). El marcador y el iman de clic (mas
+        // abajo) siguen usando peakX/peakY reales sin tocar.
+        const double peakDbDouble = static_cast<double>(peakDb);
+        if (!hasDisplayedPeak_) {
+            displayedPeakFreqMHz_ = peakFreqMHz;
+            displayedPeakDb_ = peakDbDouble;
+            hasDisplayedPeak_ = true;
+        } else {
+            const double visibleSpanMHz = (usableFreqEnd - usableFreqStart) / 1e6;
+            const bool bigJump =
+                std::abs(peakFreqMHz - displayedPeakFreqMHz_) > visibleSpanMHz * kLabelSnapFractionOfSpan
+                || std::abs(peakDbDouble - displayedPeakDb_) > kLabelSnapDeltaDb;
+            if (bigJump) {
+                displayedPeakFreqMHz_ = peakFreqMHz;
+                displayedPeakDb_ = peakDbDouble;
+            } else {
+                displayedPeakFreqMHz_ += kLabelSmoothingAlpha * (peakFreqMHz - displayedPeakFreqMHz_);
+                displayedPeakDb_ += kLabelSmoothingAlpha * (peakDbDouble - displayedPeakDb_);
+            }
+        }
         ImPlot::Annotation(
-            peakX, peakY, ImVec4(1.0f, 1.0f, 1.0f, 1.0f), ImVec2(0.0f, -18.0f), true, "%.4f MHz  %.1f dBFS", peakX,
-            peakY);
+            displayedPeakFreqMHz_, displayedPeakDb_, ImVec4(1.0f, 1.0f, 1.0f, 1.0f), ImVec2(0.0f, -18.0f), true,
+            "%.4f MHz  %.1f dBFS", displayedPeakFreqMHz_, displayedPeakDb_);
 
         // Marcadores secundarios: el resto de señales detectadas (aparte de
         // la mas fuerte, que ya tiene su propio marcador de arriba) se
