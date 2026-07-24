@@ -14,7 +14,7 @@ Lectrosonics, Audio-Technica, etc.) en el rango típico de trabajo
 RfPulse **no** es una herramienta SDR de propósito general, ni un sustituto
 de SDR++, ni una herramienta para radioaficionados, ni un software de
 coordinación de frecuencias. Es un instrumento de medida enfocado: ver de un
-vistazo, en un span de hasta 32 MHz, qué frecuencias están limpias y cuáles
+vistazo, en un span de hasta 8 MHz, qué frecuencias están limpias y cuáles
 ya están ocupadas antes/durante un show.
 
 ## Características (0.12.0-alpha)
