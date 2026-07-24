@@ -1,5 +1,10 @@
 # RfPulse
 
+<p align="center">
+  <img src="[https://joplarosoundtech.com/wp-content/uploads/2025/11/WhatsApp-Image-2025-11-27-at-13.16.34.webp](https://github.com/joplarosoundtec/RFPulse---Analizador-de-portadoras---RX888-MK2/blob/main/logo.png)" alt="RFPulse logo" width="400"/>
+</p>
+
+
 Analizador de espectro RF en tiempo real para **RX888 MK2**, enfocado
 específicamente en la monitorización profesional de sistemas de audio
 inalámbrico (IEM y micrófonos inalámbricos Shure, Sennheiser, Wisycom,
