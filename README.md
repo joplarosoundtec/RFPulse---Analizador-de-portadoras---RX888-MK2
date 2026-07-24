@@ -1,7 +1,7 @@
 # RfPulse
 
 <p align="center">
-  <img src="[https://joplarosoundtech.com/wp-content/uploads/2025/11/WhatsApp-Image-2025-11-27-at-13.16.34.webp](https://github.com/joplarosoundtec/RFPulse---Analizador-de-portadoras---RX888-MK2/blob/main/logo.png)" alt="RFPulse logo" width="400"/>
+  <img src="https://joplarosoundtech.com/wp-content/uploads/2026/07/logo.webp" alt="RFPulse logo" width="400"/>
 </p>
 
 
